@@ -200,12 +200,12 @@ public class ContaCorrenteTest {
   }
   //Teste de unidade para retirada (valor negativo)
   @Test​
-  public void depositoValorNegativo​(){
+  public void retiradaValorNegativo​(){
     Assertions.assertFalse(false, contaJurandir.retirar(-3000));​
   }
   //Teste de unidade para retirada (valor 0)
   @Test​
-  public void depositoValor0​(){
+  public void retiradaValor0​(){
     Assertions.assertFalse(false, contaJurandir.retirar(0));​
   }
 }
