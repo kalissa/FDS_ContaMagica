@@ -195,18 +195,18 @@ public class ContaCorrenteTest {
   }
   //Teste de unidade para retirada (valor acima do limite)
   @Test​
-  public void depositoValorAcimaDoLimite​(){
-    Assertions.assertFalse(false, contaJurandir.deposito(0));​
+  public void retiradaValorMaior​(){
+    Assertions.assertFalse(false, contaMariana.retirar(500000));​
   }
   //Teste de unidade para retirada (valor negativo)
   @Test​
   public void depositoValorNegativo​(){
-    Assertions.assertFalse(false, contaJurandir.deposito(0));​
+    Assertions.assertFalse(false, contaJurandir.retirar(-3000));​
   }
   //Teste de unidade para retirada (valor 0)
   @Test​
   public void depositoValor0​(){
-    Assertions.assertFalse(false, contaJurandir.deposito(0));​
+    Assertions.assertFalse(false, contaJurandir.retirar(0));​
   }
 }
 
