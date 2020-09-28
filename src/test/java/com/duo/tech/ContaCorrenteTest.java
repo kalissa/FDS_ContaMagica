@@ -34,7 +34,7 @@ public class ContaCorrenteTest {
   @BeforeEach
   public void setup(){
 
-    //1°Conta: Iniciar uma conta depositando 40.000(testar se a conta mudou de silver para gold(não pode mudar))
+    //1°Conta: Iniciar a conta depositando 40.000(testar se a conta mudou de silver para gold(não pode mudar))
     contaMaria = new ContaMagica();
     contaMaria.deposito(40000); 
 
@@ -42,7 +42,7 @@ public class ContaCorrenteTest {
     contaJoana = new ContaMagica();
     contaJoana.deposito(50000);
 
-    //3°Conta: Iniciar uma conta depositando 51.000(testar(esperar gold))
+    //3°Conta: Iniciar a conta depositando 51.000(testar(esperar gold))
     contaFelipe = new ContaMagica();
     contaFelipe.deposito(51000);
 
@@ -127,6 +127,7 @@ public class ContaCorrenteTest {
     
   }
 
+  //Teste de limites das categorias das contas.
   @ParameterizedTest
   @EnumSource(Categoria.getCategoria, names = {"Silver"})
   void testarCategoriaSilver(Categoria categoria) {
@@ -178,7 +179,35 @@ public class ContaCorrenteTest {
     assertEquals(categoria, categoriaContaAnalisada5);
   }
 
+  //Particionamento
 
+  //Teste do deposito
+
+  //Teste de unidade deposito negativo
+  @Test​
+  public void depositoNegativo​(){
+    Assertions.assertFalse(false, contaJuliana.deposito(-60000));​
+  }
+  //Teste de unidade para deposito com valor 0
+  @Test​
+  public void depositoValorZero​(){
+    Assertions.assertFalse(false, contaJurandir.deposito(0));​
+  }
+  //Teste de unidade para retirada (valor acima do limite)
+  @Test​
+  public void depositoValorAcimaDoLimite​(){
+    Assertions.assertFalse(false, contaJurandir.deposito(0));​
+  }
+  //Teste de unidade para retirada (valor negativo)
+  @Test​
+  public void depositoValorNegativo​(){
+    Assertions.assertFalse(false, contaJurandir.deposito(0));​
+  }
+  //Teste de unidade para retirada (valor 0)
+  @Test​
+  public void depositoValor0​(){
+    Assertions.assertFalse(false, contaJurandir.deposito(0));​
+  }
 }
 
 
