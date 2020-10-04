@@ -1,10 +1,12 @@
 package com.duo.tech;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
+
+import org.junit.jupiter.api.Test;
 
 public class ContaCorrenteTest {
     private ContaCorrente contaMaria;
@@ -25,6 +27,8 @@ public class ContaCorrenteTest {
     private ContaCorrente contaMariano;
     private ContaCorrente contaRafael;
     private ContaCorrente contaJurandir;
+    private ContaCorrente contaJosue;
+    private ContaCorrente contaCarlinha;
   /*
 
     Criar conta e depositar um valor negativo 5000(testar(esperar deposito = False))
@@ -125,6 +129,22 @@ public class ContaCorrenteTest {
     contaJurandir.deposito(140000);
     contaJurandir.retirada(240000);
     contaJurandir.retirada(500);
+
+    //Depois do codecoverage
+
+    //19º
+    contaJosue = new ContaCorrente("Josue", "123");
+    contaJosue.deposito(60000);
+    contaJosue.deposito(200000);
+    contaJosue.retirada(200000);
+    contaJosue.retirada(55000);
+
+    //20º
+    contaCarlinha = new ContaCorrente("Carlinha", "123");
+    contaCarlinha.deposito(60000);
+    contaCarlinha.deposito(200000);
+    contaCarlinha.deposito(200000);
+    contaCarlinha.deposito(200000);
   }
 
   @ParameterizedTest
@@ -177,4 +197,43 @@ public class ContaCorrenteTest {
     assertEquals(categoria.getCategoria(), categoriaContaAnalisada4);
     assertEquals(categoria.getCategoria(), categoriaContaAnalisada5);
   }
+
+  @Test
+  public void depositoNegativo() {		
+    assertEquals(false, contaAna.deposito(-4300));
+  }
+
+  @Test
+  public void depositoZero() {		
+    assertEquals(false, contaAna.deposito(0));
+  }
+
+  @Test
+  public void depositoPlatina() {		
+    contaAna.deposito(1000);
+    assertEquals(323225.0,contaAna.getSaldo());
+  }
+
+  @Test
+  public void retiradaNegativa() {		
+    assertFalse(contaAna.retirada(-10000));
+  }
+
+  @Test
+  public void retiradaMaiorValorQSaldo() {		
+    assertFalse(contaAna.retirada(100000000));
+  }
+
+  @Test
+  public void descerSilver() {		
+    contaLeonardo.retirada(70000);
+    contaLeonardo.retirada(25000);
+    assertEquals("Silver",contaLeonardo.getCategoria());
+  }
+
+  @Test
+  public void depositoPlatina2() {		
+    contaCarlinha.deposito(1000);
+    assertEquals(673025.0,contaCarlinha.getSaldo());
+  }  
 }
